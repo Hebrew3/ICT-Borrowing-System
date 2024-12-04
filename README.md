@@ -1,2 +1,0 @@
-bakal ako
-d
