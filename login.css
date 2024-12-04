@@ -1,130 +1,511 @@
-.margin {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
-  background: linear-gradient(135deg, #6e7c7c, #2d3a3a);
-    font-family: "rowdies";
-    background-size: cover; 
-    background-position: center; 
-    background-repeat: no-repeat;
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #0a1119;
+  font-family: 'Segoe UI', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .container {
-    display: flex;
-    width: 80%;
-    max-width: 1200px;
-    margin: auto;
-    justify-content: space-between;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
 }
 
-.logo-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+/* Globe Styles */
+.globe-container {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.logo {
-    width: 500px;
-    height: auto;
+.holographic-globe {
+  width: 350px;
+  height: 350px;
+  position: relative;
+  animation: floatGlobe 6s ease-in-out infinite;
 }
 
-.login-section {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.globe-effect {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #1a9fff, transparent 70%);
+  position: absolute;
+  box-shadow: 0 0 60px rgba(26, 159, 255, 0.5);
+  animation: pulse 4s ease-in-out infinite;
+}
+
+.ring {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  border: 2px solid rgba(26, 159, 255, 0.3);
+  top: -10%;
+  left: -10%;
+  animation: rotate 10s linear infinite;
+}
+
+.dots {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(circle, #1a9fff 1px, transparent 1px);
+  background-size: 15px 15px;
+  border-radius: 50%;
+  animation: rotate 20s linear infinite;
+}
+
+/* Login Card Styles */
+.login-container {
+  width: 50%;
+  padding: 40px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .login-card {
-    background-color: rgba(51, 51, 51, 0.8);
-    padding: 90px;
-    border-radius: 30px;
-    width: 550px;
-    text-align: center;
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(20px)
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 50px;
+  border-radius: 15px;
+  color: white;
+  width: 360px;
 }
 
-.login-logo {
-    width: 200px;
-    margin-bottom: 1px;
+.login-card h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 500;
 }
 
-form {
-    display: flex;
-    flex-direction: column;
+.subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 30px;
+  font-size: 15px;
 }
 
-label {
-    color: #fff;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-align: left;
+.form-group {
+  margin-bottom: 20px;
 }
 
-input {
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+.form-control {
+  width: 100%;
+  padding: 14px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
 }
 
-button {
-    padding: 10px;
-    background-color: #ff3c3c;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+.form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
 
-button:hover {
-    background-color: #e63333;
+.form-control:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(26, 159, 255, 0.3);
 }
 
-.text-center a {
-  color: rgba(51, 51, 51, 0.8);
+.login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1a9fff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+}
+
+.login-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.2),
+      transparent
+  );
+  transition: all 0.5s ease;
+}
+
+.login-btn:hover {
+  background: #1585db;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(26, 159, 255, 0.3);
+}
+
+.login-btn:hover:before {
+  left: 100%;
+}
+
+.login-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(26, 159, 255, 0.2);
+}
+
+/* Animations */
+@keyframes floatGlobe {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 0.6; }
+}
+
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .container {
+      flex-direction: column;
+  }
+  
+  .globe-container {
+      width: 100%;
+      height: 300px;
+  }
+  
+  .login-container {
+      width: 100%;
+      padding: 20px;
+  }
+  
+  .login-card {
+      margin: 0 auto;
+  }
+  
+  .holographic-globe {
+      width: 250px;
+      height: 250px;
+  }
+}
+
+/* Update modal styles to be hidden by default */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+/* Show modal when active */
+.modal.active {
+  opacity: 1;
+  visibility: visible;
+  display: flex;
+}
+
+.modal-content {
+  transform: translateY(-20px);
+  transition: transform 0.3s ease;
+}
+
+.modal.active .modal-content {
+  transform: translateY(0);
+}
+
+.modal-content {
+  background: rgba(26, 41, 57, 0.95);
+  padding: 50px;  /* Increased padding */
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+  position: relative;
+  color: white;
+  box-shadow: 0 0 30px rgba(26, 159, 255, 0.2);
+  animation: modalFadeIn 0.3s ease;
+}
+
+.modal-content h2 {
+  margin: 0 0 10px;
+  font-size: 26px;
+  font-weight: 500;
+  text-align: center;
+  color: white;
+}
+
+.modal-content .subtitle {
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.modal-content .form-group {
+  margin-bottom: 20px;
+}
+
+.modal-content .form-control {
+  width: 100%;
+  padding: 14px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.modal-content .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.modal-content .form-control:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.modal-content .login-btn {
+  width: 100%;
+  padding: 14px;
+  background: #1a9fff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 17px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+}
+
+.modal-content .login-btn:hover {
+  background: #1585db;
+  transform: translateY(-2px);
+}
+
+/* Update close button */
+.close {
+  position: absolute;
+  right: 25px;
+  top: 20px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  cursor: pointer;
+  transition: color 0.3s ease;
+  z-index: 1;
+}
+
+.close:hover {
+  color: #1a9fff;
+}
+
+/* Animation for modal */
+@keyframes modalFadeIn {
+  from { 
+      opacity: 0; 
+      transform: translateY(-20px); 
+  }
+  to { 
+      opacity: 1; 
+      transform: translateY(0); 
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .modal-content {
+      padding: 40px 25px;
+      width: 95%;
+  }
+  
+  .modal-content h2 {
+      font-size: 24px;
+  }
+  
+  .modal-content .form-control {
+      padding: 12px;
+  }
+}
+
+/* Update the links styling */
+.links-container {
+  margin-top: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.signup-link {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.signup-link span {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.signup-text {
+  color: #1a9fff !important;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.signup-text:hover {
+  color: #1585db !important;
+  text-decoration: none;
+}
+
+.forgot-link a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.forgot-link a:hover {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Reset and update button styles */
+.login-btn, 
+.modal-content .login-btn {
+  width: 100%;
+  padding: 14px 20px;
+  background: #1a9fff;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
   font-weight: 600;
-  
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(26, 159, 255, 0.2);
+  margin: 15px 0;
 }
 
-.text-center a:hover {
-  text-decoration: underline;
+/* Hover effect */
+.login-btn:hover,
+.modal-content .login-btn:hover {
+  background: #1585db;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(26, 159, 255, 0.3);
 }
-@keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  
-  .fade-out {
-    animation: fadeOut 0.5s forwards;
-  }
-  
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .fade-in {
-    animation: fadeIn 0.5s forwards;
-  }
-  
+
+/* Active/Click effect */
+.login-btn:active,
+.modal-content .login-btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 8px rgba(26, 159, 255, 0.2);
+}
+
+/* Shine effect */
+.login-btn::before,
+.modal-content .login-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      120deg,
+      transparent,
+      rgba(255, 255, 255, 0.3),
+      transparent
+  );
+  transition: all 0.6s ease;
+}
+
+.login-btn:hover::before,
+.modal-content .login-btn:hover::before {
+  left: 100%;
+}
+
+/* Update form inputs to match */
+.form-control,
+.modal-content .form-control {
+  width: 100%;
+  padding: 14px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  margin-bottom: 15px;
+}
+
+.form-control:focus,
+.modal-content .form-control:focus {
+  outline: none;
+  border-color: #1a9fff;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 0 2px rgba(26, 159, 255, 0.2);
+}
+
+/* Ensure modal content matches main login */
+.modal-content {
+  background: rgba(26, 41, 57, 0.95);
+  padding: 40px;
+  border-radius: 15px;
+  width: 90%;
+  max-width: 400px;
+}
+
+/* Update form groups */
+.form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.form-group:last-child {
+  margin-bottom: 10px;
+}
+
+/* Ensure consistent spacing */
+.modal-content form {
+  margin-top: 25px;
+}
