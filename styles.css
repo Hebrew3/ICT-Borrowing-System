@@ -89,7 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 400px;
+  margin-left: 30px;
 }
 
 .dropdown-content {
@@ -108,81 +108,43 @@ body {
 }
 
 /* Dropdown */
-.dropdown {
-  position: relative;
-  display: inline-block;
-  width: 100%;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: #1a2939;
+  min-width: 200px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-content a {
+  color: white;
+  padding: 12px 25px !important;
+  font-size: 16px !important;
+}
+
+.dropdown-content a:hover {
+  background-color: #263548;
 }
 
 .dropdown-btn {
-  background: none;
-  border: none;
-  color: inherit;
-  padding: 10px 15px;
   width: 100%;
   text-align: left;
+  background: none;
+  border: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  transition: background-color 0.3s ease;
 }
 
-.dropdown-btn:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-}
-
-.dropdown-content {
-  display: none;
-  background-color: #fff;
-  min-width: 200px;
-  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-  border-radius: 4px;
-  overflow: hidden;
-  position: absolute;
-  z-index: 1000;
+.dropdown-icon {
+  margin-left: auto;
+  transition: transform 0.3s ease;
 }
 
 .dropdown-content.show {
   display: block;
-}
-
-.dropdown-content a {
-  color: #333;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  transition: background-color 0.3s ease;
-}
-
-.dropdown-content a:hover {
-  background-color: #f5f5f5;
-}
-
-.dropdown-icon {
-  margin-left: 8px;
-  transition: transform 0.3s ease;
-}
-
-.show + .dropdown-btn .dropdown-icon {
-  transform: rotate(180deg);
-}
-
-/* For sidebar dropdowns */
-.sidebar .dropdown-content {
-  position: static;
-  background-color: rgba(255, 255, 255, 0.05);
-  box-shadow: none;
-  border-radius: 0;
-}
-
-.sidebar .dropdown-content a {
-  padding-left: 30px;
-  color: inherit;
-}
-
-.sidebar .dropdown-content a:hover {
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Admin Dropdown specific styles */

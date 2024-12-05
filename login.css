@@ -476,6 +476,7 @@ body {
   font-size: 14px;
   transition: all 0.3s ease;
   margin-bottom: 15px;
+  margin-right: 500px;
 }
 
 .form-control:focus,
@@ -508,4 +509,119 @@ body {
 /* Ensure consistent spacing */
 .modal-content form {
   margin-top: 25px;
+}
+
+/* Modal Container */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Modal Content */
+.modal-content {
+    background: #1a2332;
+    border-radius: 10px;
+    width: 400px;
+    padding: 30px 40px; /* Increased horizontal padding */
+}
+
+/* Modal Header */
+.modal-content h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.modal-content p {
+    color: #8b8b8b;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* Form Container */
+.form-container {
+    width: 100%;
+    padding: 0 30px; /* Added padding to match button width */
+}
+
+/* Form Inputs */
+.modal-content input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.modal-content input::placeholder {
+    color: #8b8b8b;
+}
+
+/* Login Button */
+.modal-content .login-btn {
+    width: 100%;
+    padding: 12px;
+    background: #2196f3;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 15px;
+}
+
+/* Remember Me & Forgot Password */
+.login-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 0 30px; /* Match the form padding */
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #8b8b8b;
+}
+
+.forgot-password {
+    color: #2196f3;
+    text-decoration: none;
+}
+
+/* Close Button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+/* Sign Up Link */
+.signup-link {
+    text-align: center;
+    margin-top: 20px;
+    color: #8b8b8b;
+    padding: 0 30px; /* Match the form padding */
+}
+
+.signup-link a {
+    color: #2196f3;
+    text-decoration: none;
 }
