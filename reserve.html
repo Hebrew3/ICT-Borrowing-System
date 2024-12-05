@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reserve</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reserve.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-section">
+      <div class="logo-container">
+        <span class="logo-text">ICT</span>
+        <span class="logo-subtext">Borrowing System</span>
+      </div>
+    </div>
+    <div class="menu-links">
+      <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      
+      <!-- Storage Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+          <i class="fas fa-box"></i> Storage
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="storage-dropdown">
+          <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+          <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+          <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
+        </div>
+      </div>
+      
+      <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
+      <a href="member.html"><i class="fas fa-users"></i> Member</a>
+      
+      <!-- Maintenance as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
+      <a href="item-type.php"><i class="fas fa-boxes"></i> Item Type</a>
+      <a href="category.php"><i class="fas fa-tags"></i> Category</a>
+      
+      <!-- Reports as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href="generate.html"><i class="fas fa-file-export"></i> Generate</a>
+    </div>
+    <div class="bottom-links">
+      <!-- User Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('user')">
+          <i class="fas fa-user-circle"></i> Admin
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="user-dropdown">
+          <a href="profile.html"><i class="fas fa-id-card"></i> Profile</a>
+          <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
+          <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+    <!-- Main Content -->
+    <div class="wrapper">
+        <div class="content">
+            <h1 class="dashboard-title">RESERVE</h1>
+            
+            <div class="table-container">
+                <div class="table-header">
+                    <div class="table-actions">
+                        <div class="search-section">
+                            <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                        </div>
+                        <div class="button-section">
+                            <button class="add-btn">
+                                <i class="fas fa-plus"></i> Add Reservation
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <table class="table reserve-table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Contact</th>
+                            <th>Type</th>
+                            <th>Department</th>
+                            <th>SR Code</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Table content will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="reserve.js"></script>
+</body>
+</html>

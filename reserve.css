@@ -1,0 +1,169 @@
+/* Table Container Styles */
+.wrapper {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+/* Table Container Styles */
+.table-container {
+    width: 95%;
+    margin: 20px auto;
+    overflow-x: auto;
+    background-color: #f0f0f0;  /* Updated to match index */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    font-size: 16px;
+    border-collapse: collapse;
+    background-color: #f0f0f0;  /* Updated to match index */
+}
+
+.table th {
+    background-color: #1a2939;  /* Slightly darker for header */
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;  /* Updated to match index */
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.add-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #45a049;
+}
+
+/* Status badge styles */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-badge.pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.status-badge.approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-badge.declined {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Update button and layout styles */
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.search-section {
+    flex: 1;
+}
+
+.button-section {
+    margin-left: auto; /* Push button to the right */
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 14px;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    font-size: 14px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px; /* Ensure minimum width */
+    justify-content: center; /* Center the content */
+}
+
+.add-btn i {
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+} 

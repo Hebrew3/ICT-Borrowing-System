@@ -1,0 +1,428 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    background-color: #263548;
+    color: white;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .logo-section {
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .sidebar .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .sidebar .logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #13afdf;
+    letter-spacing: 2px;
+  }
+  
+  .sidebar .logo-subtext {
+    font-size: 14px;
+    color: #8a9bb3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  .sidebar .menu-links a,
+  .sidebar .bottom-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar .menu-links a:hover,
+  .sidebar .bottom-links a:hover {
+    background-color: #1a2939;
+  }
+  
+  .sidebar .bottom-links {
+    margin-top: auto;
+    color: rgb(163, 144, 144);
+  }
+  
+  /* Dropdown */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #1a2939;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #263548;
+  }
+  
+  .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  /* Admin Dropdown specific styles */
+  #user-dropdown {
+    right: 0;
+    left: auto; /* Override the default left: 0 */
+    bottom: 40px;
+    min-width: 200px;
+    background-color: #1a2939;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .bottom-links {
+    margin-top: auto;
+    margin-bottom: 20px;
+    position: relative;
+    color: rgb(163, 144, 144);
+  }
+  
+  .bottom-links .dropdown-content {
+    z-index: 1000;
+  }
+  
+  /* Wrapper */
+  .wrapper {
+    margin-left: 250px;
+    padding: 40px;
+  }
+
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.header-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.add-new-btn {
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.items-table thead {
+    background-color: #1a2939;
+}
+
+.items-table thead tr {
+    background-color: #1a2939;
+}
+
+.items-table th {
+    background-color: #1a2939;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    border: none;
+}
+
+.items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+/* Ensure the header color persists */
+.items-table tr:first-child th {
+    background-color: #1a2939;
+    color: white;
+}
+
+/* Add hover effect to table rows */
+.items-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.edit-btn {
+    background-color: #ffd700;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+} 
+
+
+/* Regular menu items and dropdown items - consistent large size */
+.sidebar .menu-links a,
+.dropdown-btn,
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Dropdown specific styles */
+.dropdown-content {
+    display: none;
+    background-color: #1a2939;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    padding: 12px 15px !important; /* Same padding as other items */
+    font-size: 16px !important;    /* Same size as other items */
+    margin: 0 !important;          /* Reset margin for dropdown items */
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.items-table td.good-item {
+    background-color: #90EE90;
+    color: #006400;
+}
+
+.items-table td.defect-item {
+    background-color: #FFB6C6;
+    color: #8B0000;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.items-table th {
+    background-color: #1a2939;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    font-size: 14px;
+}
+
+.items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.items-table tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table-actions {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.add-btn {
+    background-color: #00b4d8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.add-btn:hover {
+    background-color: #0096c7;
+}
+
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.items-table th {
+    background-color: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+}
+
+.items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    width: 250px;
+}
+
+/* Specific styles for trash item buttons */
+.restore-btn, .delete-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin: 0 3px;
+    transition: background-color 0.2s;
+}
+
+.restore-btn {
+    background-color: #28a745;
+    color: white;
+}
+
+.restore-btn:hover {
+    background-color: #218838;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Responsive table */
+@media (max-width: 1024px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .items-table {
+        min-width: 800px;
+    }
+}

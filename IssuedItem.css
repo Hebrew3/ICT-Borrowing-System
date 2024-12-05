@@ -1,0 +1,367 @@
+/* Reset some default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    background-color: #f4f7fc;
+    color: #333;
+  }
+  
+  /* Sidebar */
+  .sidebar {
+    background-color: #263548;
+    color: white;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .sidebar .logo-section {
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  .sidebar .logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .sidebar .logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #13afdf;
+    letter-spacing: 2px;
+  }
+  
+  .sidebar .logo-subtext {
+    font-size: 14px;
+    color: #8a9bb3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    white-space: nowrap;
+  }
+  
+  .sidebar .menu-links a,
+  .sidebar .bottom-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .sidebar .menu-links a:hover,
+  .sidebar .bottom-links a:hover {
+    background-color: #1a2939;
+  }
+  
+  .sidebar .bottom-links {
+    margin-top: auto;
+    color: rgb(163, 144, 144);
+  }
+  
+  /* Dropdown */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #1a2939;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  .dropdown-content a {
+    color: white;
+    padding: 12px 25px !important;
+    font-size: 16px !important;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #263548;
+  }
+  
+  .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  .dropdown-icon {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+  }
+  
+  .dropdown-content.show {
+    display: block;
+  }
+  
+  /* Admin Dropdown specific styles */
+  #user-dropdown {
+    right: 0;
+    left: auto; /* Override the default left: 0 */
+    bottom: 40px;
+    min-width: 200px;
+    background-color: #1a2939;
+    border-radius: 4px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  .bottom-links {
+    margin-top: auto;
+    margin-bottom: 20px;
+    position: relative;
+    color: rgb(163, 144, 144);
+  }
+  
+  .bottom-links .dropdown-content {
+    z-index: 1000;
+  }
+  
+  /* Wrapper */
+  .wrapper {
+    margin-left: 250px;
+    padding: 20px;
+  }
+  
+/* Table Container Styles */
+.table-container {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin: 20px 30px;
+    padding: 20px;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.table-actions {
+    display: flex;
+    gap: 10px;
+}
+
+/* Search Input */
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Add Button */
+.add-btn {
+    background-color: #13afdf;
+    color: white;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.add-btn:hover {
+    background-color: #1097c0;
+}
+
+/* Table Styles */
+.issued-items-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.issued-items-table th {
+    background-color: #263548;
+    color: white;
+    padding: 12px;
+    text-align: left;
+}
+
+.issued-items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+
+/* Regular menu items and dropdown items - consistent large size */
+.sidebar .menu-links a,
+.dropdown-btn,
+.dropdown-content a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    margin: 8px 0;
+    padding: 12px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Dropdown specific styles */
+.dropdown-content {
+    display: none;
+    background-color: #1a2939;
+    min-width: 200px;
+}
+
+.dropdown-content a {
+    padding: 12px 15px !important; /* Same padding as other items */
+    font-size: 16px !important;    /* Same size as other items */
+    margin: 0 !important;          /* Reset margin for dropdown items */
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+/* Add these styles to your existing CSS */
+.content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.dashboard-title {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.table-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin: 0 auto;
+}
+
+.items-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.items-table th {
+    background-color: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+    color: #495057;
+}
+
+.items-table td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.status-borrowed {
+    background-color: #28a745;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.status-overdue {
+    background-color: #dc3545;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.return-btn {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.return-btn:hover {
+    background-color: #0056b3;
+}
+
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    width: 250px;
+}
+
+/* Responsive table */
+@media (max-width: 1024px) {
+    .table-container {
+        overflow-x: auto;
+    }
+    
+    .items-table {
+        min-width: 800px;
+    }
+}
