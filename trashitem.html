@@ -8,57 +8,57 @@
   <link rel="stylesheet" href="trashitem.css">
 </head>
 <body>
-   <!-- Sidebar -->
-   <div class="sidebar">
-    <div class="logo-section">
-      <div class="logo-container">
-        <span class="logo-text">ICT</span>
-        <span class="logo-subtext">Borrowing System</span>
+ <!-- Sidebar -->
+ <div class="sidebar">
+  <div class="logo-section">
+    <div class="logo-container">
+      <span class="logo-text">ICT</span>
+      <span class="logo-subtext">Borrowing System</span>
+    </div>
+  </div>
+  <div class="menu-links">
+    <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+    
+    <!-- Storage Dropdown -->
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+        <i class="fas fa-box"></i> Storage
+        <i class="fas fa-caret-down dropdown-icon"></i>
+      </button>
+      <div class="dropdown-content" id="storage-dropdown">
+        <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+        <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+        <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
       </div>
     </div>
-    <div class="menu-links">
-      <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
-      
-      <!-- Storage Dropdown -->
-      <div class="dropdown">
-        <button class="dropdown-btn" onclick="toggleDropdown('storage')">
-          <i class="fas fa-box"></i> Storage
-          <i class="fas fa-caret-down dropdown-icon"></i>
-        </button>
-        <div class="dropdown-content" id="storage-dropdown">
-          <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
-          <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
-          <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
-        </div>
-      </div>
-      
-      <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
-      <a href="member.html"><i class="fas fa-users"></i> Member</a>
-      
-      <!-- Maintenance as clickable link -->
-      <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
-      <a href="item-type.php"><i class="fas fa-boxes"></i> Item Type</a>
-      <a href="category.php"><i class="fas fa-tags"></i> Category</a>
-      
-      <!-- Reports as clickable link -->
-      <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
-      <a href="generate.html"><i class="fas fa-file-export"></i> Generate</a>
-    </div>
-    <div class="bottom-links">
-      <!-- User Dropdown -->
-      <div class="dropdown">
-        <button class="dropdown-btn" onclick="toggleDropdown('user')">
-          <i class="fas fa-user-circle"></i> Admin
-          <i class="fas fa-caret-down dropdown-icon"></i>
-        </button>
-        <div class="dropdown-content" id="user-dropdown">
-          <a href="profile.html"><i class="fas fa-id-card"></i> Profile</a>
-          <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
-          <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
-        </div>
+    
+    <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
+    <a href="member.html"><i class="fas fa-users"></i> Member</a>
+    
+    <!-- Maintenance as clickable link -->
+    <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
+    <a href="itemtype.html"><i class="fas fa-boxes"></i> Item Type</a>
+    <a href="category.html"><i class="fas fa-tags"></i> Category</a>
+    
+    <!-- Reports as clickable link -->
+    <a href="report.html" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
+    <a href=""><i class="fas fa-file-export"></i> Generate</a>
+  </div>
+  <div class="bottom-links">
+    <!-- User Dropdown -->
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown('user')">
+        <i class="fas fa-user-circle"></i> Admin
+        <i class="fas fa-caret-down dropdown-icon"></i>
+      </button>
+      <div class="dropdown-content" id="user-dropdown">
+        <a href="profile.html"><i class="fas fa-id-card"></i> Profile</a>
+        <a href="setting.html"><i class="fas fa-cog"></i> Settings</a>
+        <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
       </div>
     </div>
   </div>
+</div>
 
 <div class="wrapper">
     <div class="content">

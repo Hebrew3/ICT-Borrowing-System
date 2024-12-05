@@ -68,6 +68,13 @@ body {
   letter-spacing: 0.5px;
   padding: 8px 15px !important;
   margin-top: 15px !important;
+  pointer-events: none;
+  background-color: transparent !important;
+}
+
+.small-header:hover {
+  background-color: transparent !important;
+  color: #8a9bb3 !important;
 }
 
 .dropdown-btn {
@@ -82,6 +89,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-left: 400px;
 }
 
 .dropdown-content {
@@ -100,43 +108,81 @@ body {
 }
 
 /* Dropdown */
-.dropdown-content {
-  display: none;
-  position: absolute;
-  left: 0;
-  background-color: #1a2939;
-  min-width: 200px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.dropdown-content a {
-  color: white;
-  padding: 12px 25px !important;
-  font-size: 16px !important;
-}
-
-.dropdown-content a:hover {
-  background-color: #263548;
+.dropdown {
+  position: relative;
+  display: inline-block;
+  width: 100%;
 }
 
 .dropdown-btn {
-  width: 100%;
-  text-align: left;
   background: none;
   border: none;
+  color: inherit;
+  padding: 10px 15px;
+  width: 100%;
+  text-align: left;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  transition: background-color 0.3s ease;
 }
 
-.dropdown-icon {
-  margin-left: auto;
-  transition: transform 0.3s ease;
+.dropdown-btn:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.dropdown-content {
+  display: none;
+  background-color: #fff;
+  min-width: 200px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  position: absolute;
+  z-index: 1000;
 }
 
 .dropdown-content.show {
   display: block;
+}
+
+.dropdown-content a {
+  color: #333;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+  background-color: #f5f5f5;
+}
+
+.dropdown-icon {
+  margin-left: 8px;
+  transition: transform 0.3s ease;
+}
+
+.show + .dropdown-btn .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+/* For sidebar dropdowns */
+.sidebar .dropdown-content {
+  position: static;
+  background-color: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.sidebar .dropdown-content a {
+  padding-left: 30px;
+  color: inherit;
+}
+
+.sidebar .dropdown-content a:hover {
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* Admin Dropdown specific styles */
@@ -298,7 +344,7 @@ body {
     font-size: 16px;  /* Original size */
 }
 
-/* Add styles for Maintenance and Reports headers */
+/* Menu section headers (Maintenance and Reports only) */
 .menu-section-header {
     font-size: 13px;
     color: #8a9bb3;
@@ -307,13 +353,13 @@ body {
     text-transform: uppercase;
     letter-spacing: 0.5px;
     font-weight: bold;
+    pointer-events: none;  /* Disable hover interactions */
+    background-color: transparent !important;
 }
 
-/* Adjust the items under these sections */
-.menu-section-header + a {
-    font-size: 14px;
-    padding: 8px 25px !important;  /* More indentation */
-    margin: 2px 0 !important;      /* Reduced margin */
+.menu-section-header:hover {
+    background-color: transparent !important;
+    color: #8a9bb3 !important;
 }
 
 /* Regular menu items and dropdown items - consistent large size */

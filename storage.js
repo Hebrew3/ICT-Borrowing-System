@@ -98,6 +98,7 @@ document.addEventListener('DOMContentLoaded', function() {
 function toggleDropdown(dropdownId) {
     const dropdowns = document.getElementsByClassName('dropdown-content');
     
+    // Close all other dropdowns first
     for (let dropdown of dropdowns) {
         if (dropdown.id !== dropdownId + '-dropdown') {
             dropdown.classList.remove('show');
@@ -107,5 +108,16 @@ function toggleDropdown(dropdownId) {
     const selectedDropdown = document.getElementById(dropdownId + '-dropdown');
     if (selectedDropdown) {
         selectedDropdown.classList.toggle('show');
+        
+        // Position the dropdown next to the button
+        const button = document.getElementById(dropdownId);
+        if (button) {
+            const buttonRect = button.getBoundingClientRect();
+            selectedDropdown.style.position = 'absolute';
+            selectedDropdown.style.top = '0';
+            selectedDropdown.style.left = '100%';
+            selectedDropdown.style.marginTop = `${buttonRect.top}px`;
+            selectedDropdown.style.transform = 'translateX(10px)';
+        }
     }
 }
