@@ -167,3 +167,6 @@
 .add-btn:hover {
     background-color: #218838;
 } 
+.dropdown-content{
+    margin-left: 100px;
+}
