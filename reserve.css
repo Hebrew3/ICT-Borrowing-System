@@ -1,4 +1,15 @@
 /* Table Container Styles */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #1a2939;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    margin-left: 100px;
+    margin-bottom: 500px;
+  }
+
 .wrapper {
     margin-left: 250px;
     width: calc(100% - 250px);
@@ -167,3 +178,14 @@
 .add-btn:hover {
     background-color: #218838;
 } 
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+  }
+
+  
