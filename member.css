@@ -142,13 +142,29 @@
   
   /* Admin Dropdown specific styles */
   #user-dropdown {
-    right: 0;
-    left: auto; /* Override the default left: 0 */
-    bottom: 40px;
-    min-width: 200px;
-    background-color: #1a2939;
+    background-color: #263548;
+    min-width: 150px;
+    position: absolute;
+    right: 20px;
+    bottom: 60px;
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  }
+  
+  #user-dropdown a {
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    border-bottom: 1px solid #1a2939;
+  }
+  
+  #user-dropdown a:last-child {
+    border-bottom: none;
+  }
+  
+  #user-dropdown a:hover {
+    background-color: #1a2939;
   }
   
   .bottom-links {
@@ -256,27 +272,52 @@
   
   .actions {
     display: flex;
-    gap: 5px;
-    justify-content: center;
+    gap: 8px;
   }
   
   .action-btn {
-    background: none;
+    padding: 6px 12px;
     border: none;
+    border-radius: 4px;
     cursor: pointer;
-    padding: 5px;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
   }
   
   .action-btn.edit {
-    color: #007bff;
+    background-color: #ffb400;  /* Bright yellow background */
+    color: #000;
   }
   
   .action-btn.delete {
-    color: #dc3545;
+    background-color: #e74c3c;  /* Bright red background */
+    color: white;
+  }
+  
+  .action-btn i {
+    margin-right: 4px;
+    font-size: 14px;
   }
   
   .action-btn:hover {
-    opacity: 0.8;
+    opacity: 0.9;
+  }
+  
+  /* Text style */
+  .action-btn.edit::after {
+    content: " Edit";
+  }
+  
+  .action-btn.delete::after {
+    content: " Delete";
+  }
+  
+  /* Make the Actions column more compact */
+  .table td:last-child {
+    white-space: nowrap;
+    padding: 8px;
+    width: 1%;
   }
   
   /* Icons */
@@ -345,4 +386,112 @@
   .btn i {
     font-size: 14px;
     margin-right: 4px;
+  }
+  
+  /* Modal styles */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 500px;
+    border-radius: 5px;
+  }
+  
+  .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .close:hover {
+    color: black;
+  }
+  
+  .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form-group input,
+  .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .submit-btn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  /* Action Button Styles for Reserve */
+  .reserve-table .actions {
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+  }
+  
+  .reserve-table .action-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+  }
+  
+  .reserve-table .action-btn.edit {
+    color: #007bff;
+  }
+  
+  .reserve-table .action-btn.delete {
+    color: #dc3545;
+  }
+  
+  .reserve-table .action-btn:hover {
+    opacity: 0.8;
+  }
+  
+  /* Make the Actions column more compact */
+  .reserve-table td:last-child {
+    white-space: nowrap;
+    padding-right: 10px;
+    width: 1%;
+  }
+  
+  /* Ensure the dropdown aligns with the button */
+  .bottom-links .dropdown {
+    position: relative;
+  }
+  
+  .bottom-links .dropdown-btn {
+    width: 100%;
+    text-align: left;
+    padding: 12px 15px;
   }

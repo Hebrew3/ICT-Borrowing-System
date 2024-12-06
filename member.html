@@ -68,7 +68,7 @@
             <div class="table-header">
                 <h2>Members</h2>
                 <!-- Add Member Button -->
-                <button class="add-button">
+                <button class="add-button" id="addMemberBtn">
                     <i class="fas fa-plus"></i> Add Member
                 </button>
             </div>
@@ -117,6 +117,83 @@
         </div>
     </div>
 
-    <script src="index.js"></script>
+    <!-- Add Member Modal -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Member</h2>
+            <form id="addMemberForm">
+                <div class="form-group">
+                    <label for="memberId">Member ID:</label>
+                    <input type="text" id="memberId" required>
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Add Member</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Member Modal -->
+    <div id="editMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Member</h2>
+            <form id="editMemberForm">
+                <input type="hidden" id="editRowIndex">
+                <div class="form-group">
+                    <label for="editMemberId">Member ID:</label>
+                    <input type="text" id="editMemberId" required>
+                </div>
+                <div class="form-group">
+                    <label for="editFullName">Full Name:</label>
+                    <input type="text" id="editFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editContact">Contact:</label>
+                    <input type="text" id="editContact" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDepartment">Department:</label>
+                    <input type="text" id="editDepartment" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStatus">Status:</label>
+                    <select id="editStatus" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Update Member</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="member.js"></script>
 </body>
 </html>

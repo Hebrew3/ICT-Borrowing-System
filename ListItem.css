@@ -578,3 +578,44 @@
     vertical-align: middle;
     text-align: center;
 }
+
+/* Menu links and icons alignment */
+.menu-links a, 
+.dropdown-btn,
+.bottom-links .dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Remove ALL space between icon and text for Storage and Admin */
+.dropdown .dropdown-btn,
+.bottom-links .dropdown-btn {
+    gap: 0;  /* Remove gap completely */
+}
+
+.dropdown .dropdown-btn i:first-child,
+.bottom-links .dropdown-btn i:first-child {
+    margin-right: 0;  /* Remove any margin */
+    padding-right: 0; /* Remove any padding */
+}
+
+/* Text spacing after icon */
+.dropdown .dropdown-btn span,
+.bottom-links .dropdown-btn span {
+    margin-left: 8px;  /* Add space after icon */
+}
+
+/* Icon sizing and alignment */
+.menu-links a i,
+.dropdown-btn i,
+.bottom-links i {
+    width: 20px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Dropdown arrow spacing */
+.dropdown-icon {
+    margin-left: auto !important;  /* Push arrow to the right */
+}

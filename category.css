@@ -88,8 +88,9 @@
   
   .dropdown-content a {
     color: white;
-    padding: 12px 25px !important;
+    padding: 12px 15px !important;
     font-size: 16px !important;
+    margin: 0 !important;
   }
   
   .dropdown-content a:hover {
@@ -577,4 +578,179 @@
 .items-table td {
     vertical-align: middle;
     text-align: center;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    background-color: #263548;
+    width: 250px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.logo-section {
+    padding: 20px 0;
+    text-align: center;
+}
+
+.logo-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.logo-text {
+    font-size: 32px;
+    font-weight: bold;
+    color: #13afdf;
+    letter-spacing: 2px;
+}
+
+.logo-subtext {
+    font-size: 14px;
+    color: #8a9bb3;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.menu-links a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 12px 15px;
+    font-size: 16px;
+    transition: background-color 0.3s;
+}
+
+.menu-links a:hover {
+    background-color: #1a2939;
+}
+
+.small-header {
+    font-size: 13px !important;
+    color: #8a9bb3 !important;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    position: relative;
+}
+
+.dropdown-btn {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    padding: 12px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
+}
+
+.dropdown-btn:hover {
+    background-color: #1a2939;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #1a2939;
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-icon {
+    transition: transform 0.3s ease;
+}
+
+/* Admin Dropdown Styles */
+#user-dropdown {
+    background-color: #263548;
+    min-width: 150px;
+    position: absolute;
+    right: 20px;
+    bottom: 60px;
+    border-radius: 4px;
+}
+
+#user-dropdown a {
+    color: white;
+    padding: 12px 15px;
+    text-decoration: none;
+    display: block;
+    font-size: 16px;
+    border-bottom: 1px solid #1a2939;
+}
+
+#user-dropdown a:last-child {
+    border-bottom: none;
+}
+
+#user-dropdown a:hover {
+    background-color: #1a2939;
+}
+
+/* Content wrapper */
+.wrapper {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+/* Menu links and icons alignment */
+.menu-links a, 
+.dropdown-btn,
+.bottom-links .dropdown-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;  /* Space between icon and text */
+    padding: 12px 15px;
+    font-size: 16px;
+}
+
+/* Remove gap for Storage and Admin dropdowns */
+.dropdown .dropdown-btn,
+.bottom-links .dropdown-btn {
+    gap: 5px;  /* Reduced space for Storage and Admin */
+}
+
+/* Icon sizing and alignment */
+.menu-links a i,
+.dropdown-btn i,
+.bottom-links i {
+    width: 20px;  /* Fixed width for icons */
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Dropdown content alignment */
+.dropdown-content a {
+    padding-left: 45px !important;  /* Indent dropdown items */
+}
+
+/* Admin dropdown specific alignment */
+.bottom-links .dropdown-btn {
+    width: 100%;
+    justify-content: flex-start;  /* Align items to the start */
+}
+
+.bottom-links .dropdown-btn .dropdown-icon {
+    margin-left: auto;  /* Push the dropdown arrow to the right */
+}
+
+/* Storage dropdown specific alignment */
+.dropdown .dropdown-btn .dropdown-icon {
+    margin-left: auto;
 }

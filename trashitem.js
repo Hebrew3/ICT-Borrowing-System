@@ -108,7 +108,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Search functionality
     const searchInput = document.getElementById('searchInput');
-    searchInput.addEventListener('keyup', function() {
+    const tableBody = document.querySelector('.items-table tbody');
+    
+    if (!searchInput || !tableBody) {
+        console.error('Search input or table body not found!');
+        return;
+    }
+
+    // Search functionality (keep existing code)
+    searchInput.addEventListener('input', function() {
         const searchTerm = this.value.toLowerCase();
         const rows = document.querySelectorAll('tbody tr');
         
@@ -138,8 +146,23 @@ document.addEventListener('DOMContentLoaded', function() {
     // Delete button click handlers
     document.querySelectorAll('.delete-btn').forEach(button => {
         button.addEventListener('click', function() {
-            currentRow = this.closest('tr');
-            deleteModal.style.display = 'block';
+            // Get the row to delete
+            const row = this.closest('tr');
+            
+            // Show confirmation dialog
+            if (confirm('Are you sure you want to delete this item?')) {
+                // Remove the row from the table
+                row.remove();
+                
+                // Optional: Show success message
+                alert('Item deleted successfully');
+                
+                // Optional: Renumber the remaining rows
+                const rows = tableBody.getElementsByTagName('tr');
+                Array.from(rows).forEach((row, index) => {
+                    row.cells[0].textContent = index + 1;
+                });
+            }
         });
     });
 
