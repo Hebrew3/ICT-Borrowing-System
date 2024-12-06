@@ -1,220 +1,203 @@
-// Sample data for reservations
-const reservations = [
+// Sample data - replace this with your actual data source
+let reservations = [
     {
         id: 1,
         name: "John Doe",
         contact: "09123456789",
         type: "Student",
-        department: "CICS",
+        department: "ICT",
         srCode: "21-12345",
         status: "Pending"
-    },
-    {
-        id: 2,
-        name: "Jane Smith",
-        contact: "09987654321",
-        type: "Faculty",
-        department: "CAS",
-        srCode: "22-54321",
-        status: "Approved"
-    },
-    {
-        id: 3,
-        name: "Mike Johnson",
-        contact: "09456789123",
-        type: "Student",
-        department: "COE",
-        srCode: "20-98765",
-        status: "Declined"
     }
+    // Add more sample data as needed
 ];
 
-// Function to display reservations
-function displayReservations(items) {
-    const tableBody = document.querySelector('.reserve-table tbody');
-    if (!tableBody) return;
+// DOM Elements
+const addModal = document.getElementById('addModal');
+const editModal = document.getElementById('editModal');
+const deleteModal = document.getElementById('deleteModal');
+const addBtn = document.querySelector('.add-btn');
+const closeBtns = document.querySelectorAll('.close');
+const addForm = document.getElementById('addReservationForm');
+const editForm = document.getElementById('editReservationForm');
+const searchInput = document.getElementById('searchInput');
+let currentRow = null;
 
-    tableBody.innerHTML = '';
+// Event Listeners
+addBtn.addEventListener('click', () => addModal.style.display = 'block');
 
-    if (items.length === 0) {
-        tableBody.innerHTML = `
-            <tr>
-                <td colspan="8" style="text-align: center;">No reservations found</td>
-            </tr>
-        `;
-        return;
-    }
-
-    items.forEach((item, index) => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-            <td>${index + 1}</td>
-            <td>${item.name}</td>
-            <td>${item.contact}</td>
-            <td>${item.type}</td>
-            <td>${item.department}</td>
-            <td>${item.srCode}</td>
-            <td><span class="status-badge ${item.status.toLowerCase()}">${item.status}</span></td>
-            <td class="action-buttons">
-                <button class="edit-btn" onclick="editReservation(${item.id})">
-                    <i class="fas fa-edit"></i>
-                </button>
-                <button class="delete-btn" onclick="deleteReservation(${item.id})">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </td>
-        `;
-        tableBody.appendChild(row);
+// Close Modals
+closeBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        addModal.style.display = 'none';
+        editModal.style.display = 'none';
+        deleteModal.style.display = 'none';
     });
+});
+
+// Close modal when clicking outside
+window.onclick = (e) => {
+    if (e.target === addModal || e.target === editModal || e.target === deleteModal) {
+        addModal.style.display = 'none';
+        editModal.style.display = 'none';
+        deleteModal.style.display = 'none';
+    }
+};
+
+// Add Reservation
+addForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const newReservation = {
+        id: reservations.length + 1,
+        name: document.getElementById('name').value,
+        contact: document.getElementById('contact').value,
+        type: document.getElementById('type').value,
+        department: document.getElementById('department').value,
+        srCode: document.getElementById('srCode').value,
+        status: "Pending"
+    };
+    reservations.push(newReservation);
+    updateTable();
+    addForm.reset();
+    addModal.style.display = 'none';
+});
+
+// Open Edit Modal
+function openEditModal(id) {
+    const reservation = reservations.find(r => r.id === id);
+    if (reservation) {
+        document.getElementById('editId').value = reservation.id;
+        document.getElementById('editName').value = reservation.name;
+        document.getElementById('editContact').value = reservation.contact;
+        document.getElementById('editType').value = reservation.type;
+        document.getElementById('editDepartment').value = reservation.department;
+        document.getElementById('editSrCode').value = reservation.srCode;
+        editModal.style.display = 'block';
+    }
+}
+
+// Open Delete Modal
+function openDeleteModal(id) {
+    document.getElementById('deleteId').value = id;
+    deleteModal.style.display = 'block';
+}
+
+// Edit Reservation
+editForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const id = parseInt(document.getElementById('editId').value);
+    const index = reservations.findIndex(r => r.id === id);
+    
+    if (index !== -1) {
+        reservations[index] = {
+            id: id,
+            name: document.getElementById('editName').value,
+            contact: document.getElementById('editContact').value,
+            type: document.getElementById('editType').value,
+            department: document.getElementById('editDepartment').value,
+            srCode: document.getElementById('editSrCode').value,
+            status: reservations[index].status
+        };
+        updateTable();
+        editModal.style.display = 'none';
+    }
+});
+
+// Confirm Delete
+function confirmDelete() {
+    const id = parseInt(document.getElementById('deleteId').value);
+    reservations = reservations.filter(r => r.id !== id);
+    updateTable();
+    deleteModal.style.display = 'none';
+}
+
+// Cancel Delete
+function cancelDelete() {
+    deleteModal.style.display = 'none';
 }
 
 // Search functionality
-function searchReservations(searchTerm) {
-    const filteredItems = reservations.filter(item => 
-        item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.srCode.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        item.department.toLowerCase().includes(searchTerm.toLowerCase())
+searchInput.addEventListener('keyup', () => {
+    const searchTerm = searchInput.value.toLowerCase();
+    const filteredReservations = reservations.filter(reservation => 
+        reservation.name.toLowerCase().includes(searchTerm) ||
+        reservation.srCode.toLowerCase().includes(searchTerm) ||
+        reservation.department.toLowerCase().includes(searchTerm)
     );
-    displayReservations(filteredItems);
-}
-
-// Edit reservation function
-function editReservation(id) {
-    const reservation = reservations.find(item => item.id === id);
-    if (reservation) {
-        console.log('Editing reservation:', reservation);
-        alert(`Editing reservation for: ${reservation.name}`);
-    }
-}
-
-// Delete reservation function
-function deleteReservation(id) {
-    const reservation = reservations.find(item => item.id === id);
-    if (reservation && confirm(`Are you sure you want to delete reservation for ${reservation.name}?`)) {
-        console.log('Deleting reservation:', reservation);
-        alert(`Reservation deleted for: ${reservation.name}`);
-    }
-}
-
-// Track active dropdowns
-let activeDropdown = null;
-
-// Function to toggle dropdown visibility
-function toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(`${dropdownId}-dropdown`);
-    const allDropdowns = document.querySelectorAll('.dropdown-content');
-    const currentButton = document.querySelector(`[onclick="toggleDropdown('${dropdownId}')"]`);
-    
-    // Close all other dropdowns first
-    allDropdowns.forEach(d => {
-        if (d !== dropdown && d.classList.contains('show')) {
-            d.classList.remove('show');
-            // Reset other dropdown button icons
-            const otherButton = d.previousElementSibling;
-            if (otherButton) {
-                const icon = otherButton.querySelector('.dropdown-icon');
-                if (icon) icon.style.transform = 'rotate(0deg)';
-            }
-        }
-    });
-
-    // Toggle current dropdown
-    dropdown.classList.toggle('show');
-    
-    // Rotate icon based on dropdown state
-    const icon = currentButton.querySelector('.dropdown-icon');
-    if (icon) {
-        icon.style.transform = dropdown.classList.contains('show') ? 'rotate(180deg)' : 'rotate(0deg)';
-    }
-    
-    // Update active dropdown
-    activeDropdown = dropdown.classList.contains('show') ? dropdown : null;
-}
-
-// Function to handle dropdown item selection
-function handleDropdownClick(event, itemName) {
-    event.preventDefault(); // Prevent immediate navigation
-    
-    const dropdownBtn = event.target.closest('.dropdown').querySelector('.dropdown-btn');
-    if (dropdownBtn) {
-        // Update button text to show selected item
-        const icon = dropdownBtn.querySelector('i').cloneNode(true);
-        dropdownBtn.innerHTML = '';
-        dropdownBtn.appendChild(icon);
-        dropdownBtn.appendChild(document.createTextNode(' ' + itemName));
-        dropdownBtn.appendChild(document.createElement('i')).className = 'fas fa-caret-down dropdown-icon';
-    }
-
-    // Close the dropdown
-    if (activeDropdown) {
-        activeDropdown.classList.remove('show');
-        activeDropdown = null;
-    }
-
-    // Navigate to the link after a small delay (for visual feedback)
-    setTimeout(() => {
-        window.location.href = event.target.href;
-    }, 100);
-}
-
-// Close dropdowns when clicking outside
-document.addEventListener('click', function(event) {
-    const isDropdownBtn = event.target.matches('.dropdown-btn') || 
-                         event.target.matches('.dropdown-icon') ||
-                         event.target.parentElement.matches('.dropdown-btn');
-    
-    if (!isDropdownBtn) {
-        const dropdowns = document.querySelectorAll('.dropdown-content');
-        dropdowns.forEach(dropdown => {
-            if (dropdown.classList.contains('show')) {
-                dropdown.classList.remove('show');
-                // Reset icon rotation
-                const button = dropdown.previousElementSibling;
-                if (button) {
-                    const icon = button.querySelector('.dropdown-icon');
-                    if (icon) icon.style.transform = 'rotate(0deg)';
-                }
-            }
-        });
-        activeDropdown = null;
-    }
+    updateTable(filteredReservations);
 });
 
-// Optional: Close dropdowns when pressing Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape' && activeDropdown) {
-        activeDropdown.classList.remove('show');
-        // Reset icon rotation
-        const button = activeDropdown.previousElementSibling;
-        if (button) {
-            const icon = button.querySelector('.dropdown-icon');
-            if (icon) icon.style.transform = 'rotate(0deg)';
-        }
-        activeDropdown = null;
-    }
-});
-
-// Optional: Add hover effect for dropdown items
-document.querySelectorAll('.dropdown-content a').forEach(item => {
-    item.addEventListener('mouseenter', function() {
-        this.style.backgroundColor = 'rgba(255, 255, 255, 0.1)';
-    });
+// Update Table
+function updateTable(data = reservations) {
+    const tbody = document.querySelector('.reserve-table tbody');
+    tbody.innerHTML = '';
     
-    item.addEventListener('mouseleave', function() {
-        this.style.backgroundColor = '';
+    data.forEach(reservation => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td>${reservation.id}</td>
+            <td>${reservation.name}</td>
+            <td>${reservation.contact}</td>
+            <td>${reservation.type}</td>
+            <td>${reservation.department}</td>
+            <td>${reservation.srCode}</td>
+            <td>
+                <span class="status-badge ${reservation.status.toLowerCase()}">
+                    ${reservation.status}
+                </span>
+            </td>
+            <td>
+                <button onclick="openEditModal(${reservation.id})" class="btn btn-edit">
+                    <i class="fas fa-edit"></i> Edit
+                </button>
+                <button onclick="openDeleteModal(${reservation.id})" class="btn btn-delete">
+                    <i class="fas fa-trash"></i> Delete
+                </button>
+            </td>
+        `;
+        tbody.appendChild(tr);
     });
-});
+}
 
-// Initialize the page
+// Initial table load
+updateTable();
+
 document.addEventListener('DOMContentLoaded', function() {
-    // Display initial data
-    displayReservations(reservations);
+    // Get modal elements
+    const editModal = document.getElementById('editModal');
+    const deleteModal = document.getElementById('deleteModal');
+    const closeBtns = document.querySelectorAll('.close');
+    let currentRow = null;
 
-    // Set up search functionality
-    const searchInput = document.getElementById('searchInput');
-    if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-            searchReservations(e.target.value);
+    // Add click event listeners to edit buttons
+    document.querySelectorAll('.btn-edit').forEach(button => {
+        button.addEventListener('click', function() {
+            currentRow = this.closest('tr');
+            editModal.style.display = 'block';
         });
-    }
+    });
+
+    // Add click event listeners to delete buttons
+    document.querySelectorAll('.btn-delete').forEach(button => {
+        button.addEventListener('click', function() {
+            currentRow = this.closest('tr');
+            deleteModal.style.display = 'block';
+        });
+    });
+
+    // Close buttons
+    closeBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            editModal.style.display = 'none';
+            deleteModal.style.display = 'none';
+        });
+    });
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        if (event.target == editModal || event.target == deleteModal) {
+            editModal.style.display = 'none';
+            deleteModal.style.display = 'none';
+        }
+    };
 }); 
