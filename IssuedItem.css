@@ -119,7 +119,7 @@
   /* Admin Dropdown specific styles */
   #user-dropdown {
     right: 0;
-    left: auto; /* Override the default left: 0 */
+    left: auto; 
     bottom: 40px;
     min-width: 200px;
     background-color: #1a2939;
