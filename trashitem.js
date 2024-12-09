@@ -1,230 +1,108 @@
-// Sample data array with predefined trash items
-let trashItems = [
-    {
-        itemName: "Old Laptop",
-        serialNo: "ICT-001",
-        category: "ICT Equipment",
-        description: "Broken Core i5 Laptop",
-        dateRemoved: "2024-03-15",
-        reason: "Beyond repair"
-    },
-    {
-        itemName: "Damaged Projector",
-        serialNo: "AV-002",
-        category: "Audio Visual",
-        description: "Faulty HD Projector",
-        dateRemoved: "2024-03-16",
-        reason: "Unrepairable damage"
-    }
-];
-
-// DOM Elements
+// Get all modals and close buttons
 const addModal = document.getElementById('addModal');
-const addBtn = document.querySelector('.add-btn');
-const closeBtns = document.querySelectorAll('.close');
-const addForm = document.getElementById('addItemForm');
+const restoreModal = document.getElementById('restoreModal');
+const deleteModal = document.getElementById('deleteModal');
+const closeButtons = document.querySelectorAll('.close');
+
+// Dropdown toggle functionality
+function toggleDropdown(id) {
+    const dropdownContent = document.getElementById(`${id}-dropdown`);
+    dropdownContent.classList.toggle('show');
+}
+
+// Close dropdowns when clicking outside
+window.addEventListener('click', (event) => {
+    if (!event.target.matches('.dropdown-btn')) {
+        const dropdowns = document.querySelectorAll('.dropdown-content');
+        dropdowns.forEach((dropdown) => {
+            if (dropdown.classList.contains('show')) {
+                dropdown.classList.remove('show');
+            }
+        });
+    }
+});
+
+// Modal control functions
+function showModal(modal) {
+    modal.style.display = 'block';
+}
+
+function closeModal(modal) {
+    modal.style.display = 'none';
+}
+
+// Close modals on clicking the close button
+closeButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        closeModal(modal);
+    });
+});
+
+// Close modals when clicking outside the modal content
+window.addEventListener('click', (event) => {
+    const modals = document.querySelectorAll('.modal');
+    modals.forEach((modal) => {
+        if (event.target === modal) {
+            closeModal(modal);
+        }
+    });
+});
+
+// Restore button functionality
+document.querySelectorAll('.restore-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+        const row = button.closest('tr'); 
+        showModal(restoreModal);
+
+        document.getElementById('confirmRestore').onclick = () => {
+            alert('Item restored successfully!');
+            row.remove();
+            closeModal(restoreModal);
+        };
+    });
+});
+
+document.getElementById('cancelRestore').addEventListener('click', () => {
+    closeModal(restoreModal);
+});
+
+// Delete button functionality
+document.querySelectorAll('.delete-btn').forEach((button) => {
+    button.addEventListener('click', () => {
+        const row = button.closest('tr');
+        showModal(deleteModal);
+
+        document.getElementById('confirmDelete').onclick = () => {
+            row.remove(); 
+            alert('Item deleted successfully!');
+            closeModal(deleteModal);
+        };
+    });
+});
+
+document.getElementById('cancelDelete').addEventListener('click', () => {
+    closeModal(deleteModal);
+});
+
+// Add item functionality
+document.getElementById('addItemForm').addEventListener('submit', (event) => {
+    event.preventDefault(); 
+    alert('Item added to trash successfully!');
+    closeModal(addModal);
+});
+
+// Search functionality
 const searchInput = document.getElementById('searchInput');
+const tableRows = document.querySelectorAll('.items-table tbody tr');
 
-// Show Add Modal
-addBtn.addEventListener('click', () => {
-    addModal.style.display = "block";
-});
-
-// Close Modals
-closeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-        addModal.style.display = "none";
+searchInput.addEventListener('input', () => {
+    const filter = searchInput.value.toLowerCase();
+    tableRows.forEach((row) => {
+        const cells = row.getElementsByTagName('td');
+        const match = Array.from(cells).some((cell) =>
+            cell.textContent.toLowerCase().includes(filter)
+        );
+        row.style.display = match ? '' : 'none';
     });
 });
-
-// Add Item
-addForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const newItem = {
-        itemName: document.getElementById('itemName').value,
-        serialNo: document.getElementById('serialNo').value,
-        category: document.getElementById('category').value,
-        description: document.getElementById('description').value,
-        dateRemoved: document.getElementById('dateRemoved').value,
-        reason: document.getElementById('reason').value
-    };
-    
-    trashItems.push(newItem);
-    updateTable();
-    addForm.reset();
-    addModal.style.display = "none";
-});
-
-// Update Table
-function updateTable() {
-    const tbody = document.querySelector('.trash-items-table tbody');
-    tbody.innerHTML = '';
-    
-    trashItems.forEach((item, index) => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-            <td>${item.itemName}</td>
-            <td>${item.serialNo}</td>
-            <td>${item.category}</td>
-            <td>${item.description}</td>
-            <td>${item.dateRemoved}</td>
-            <td>${item.reason}</td>
-            <td>
-                <div class="action-buttons">
-                    <button onclick="openEditModal(${index})" class="btn btn-edit">
-                        <i class="fas fa-edit"></i> Edit
-                    </button>
-                    <button onclick="openDeleteModal(${index})" class="btn btn-delete">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </div>
-            </td>
-        `;
-        tbody.appendChild(tr);
-    });
-}
-
-// Dropdown functionality
-function toggleDropdown(dropdownId) {
-    const dropdown = document.getElementById(dropdownId + '-dropdown');
-    const allDropdowns = document.querySelectorAll('.dropdown-content');
-    
-    allDropdowns.forEach(function(d) {
-        if (d.id !== dropdownId + '-dropdown') {
-            d.classList.remove('show');
-        }
-    });
-    
-    dropdown.classList.toggle('show');
-}
-
-// Wait for the DOM to be fully loaded
-document.addEventListener('DOMContentLoaded', function() {
-    // Get modal elements
-    const restoreModal = document.getElementById('restoreModal');
-    const deleteModal = document.getElementById('deleteModal');
-    const closeBtns = document.querySelectorAll('.close');
-    let currentRow = null;
-
-    // Search functionality
-    const searchInput = document.getElementById('searchInput');
-    const tableBody = document.querySelector('.items-table tbody');
-    
-    if (!searchInput || !tableBody) {
-        console.error('Search input or table body not found!');
-        return;
-    }
-
-    // Search functionality (keep existing code)
-    searchInput.addEventListener('input', function() {
-        const searchTerm = this.value.toLowerCase();
-        const rows = document.querySelectorAll('tbody tr');
-        
-        rows.forEach(function(row) {
-            const cells = row.getElementsByTagName('td');
-            let found = false;
-            
-            Array.from(cells).forEach(function(cell) {
-                const text = cell.textContent.toLowerCase();
-                if (text.includes(searchTerm)) {
-                    found = true;
-                }
-            });
-            
-            row.style.display = found ? '' : 'none';
-        });
-    });
-
-    // Restore button click handlers
-    document.querySelectorAll('.restore-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            currentRow = this.closest('tr');
-            restoreModal.style.display = 'block';
-        });
-    });
-
-    // Delete button click handlers
-    document.querySelectorAll('.delete-btn').forEach(button => {
-        button.addEventListener('click', function() {
-            // Get the row to delete
-            const row = this.closest('tr');
-            
-            // Show confirmation dialog
-            if (confirm('Are you sure you want to delete this item?')) {
-                // Remove the row from the table
-                row.remove();
-                
-                // Optional: Show success message
-                alert('Item deleted successfully');
-                
-                // Optional: Renumber the remaining rows
-                const rows = tableBody.getElementsByTagName('tr');
-                Array.from(rows).forEach((row, index) => {
-                    row.cells[0].textContent = index + 1;
-                });
-            }
-        });
-    });
-
-    // Confirm restore
-    document.getElementById('confirmRestore').addEventListener('click', function() {
-        if (currentRow) {
-            currentRow.remove();
-            restoreModal.style.display = 'none';
-        }
-    });
-
-    // Confirm delete
-    document.getElementById('confirmDelete').addEventListener('click', function() {
-        if (currentRow) {
-            currentRow.remove();
-            deleteModal.style.display = 'none';
-        }
-    });
-
-    // Cancel buttons
-    document.getElementById('cancelRestore').addEventListener('click', function() {
-        restoreModal.style.display = 'none';
-    });
-
-    document.getElementById('cancelDelete').addEventListener('click', function() {
-        deleteModal.style.display = 'none';
-    });
-
-    // Close buttons
-    closeBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-            restoreModal.style.display = 'none';
-            deleteModal.style.display = 'none';
-        });
-    });
-
-    // Close modals when clicking outside
-    window.onclick = function(event) {
-        if (event.target == restoreModal) {
-            restoreModal.style.display = 'none';
-        }
-        if (event.target == deleteModal) {
-            deleteModal.style.display = 'none';
-        }
-        // Dropdown close functionality
-        if (!event.target.matches('.dropdown-btn') && !event.target.matches('.dropdown-icon')) {
-            const dropdowns = document.getElementsByClassName('dropdown-content');
-            for (let dropdown of dropdowns) {
-                if (dropdown.classList.contains('show')) {
-                    dropdown.classList.remove('show');
-                }
-            }
-        }
-    };
-});
-
-// Close modal when clicking outside
-window.onclick = function(event) {
-    if (event.target == addModal) {
-        addModal.style.display = "none";
-    }
-}
-
-// Initial table load
-updateTable();
