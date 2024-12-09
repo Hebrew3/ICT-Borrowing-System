@@ -1,0 +1,380 @@
+/* Table Container Styles */
+.wrapper {
+    margin-left: 250px;
+    width: calc(100% - 250px);
+    padding: 20px;
+}
+
+.content {
+    width: 100%;
+    max-width: 1800px;
+    margin: 0 auto;
+}
+/* Table Container Styles */
+.table-container {
+    width: 95%;
+    margin: 20px auto;
+    overflow-x: auto;
+    background-color: #f0f0f0;  /* Updated to match index */
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.table {
+    width: 100%;
+    font-size: 16px;
+    border-collapse: collapse;
+    background-color: #f0f0f0;  /* Updated to match index */
+}
+
+.table th {
+    background-color: #1a2939;  /* Slightly darker for header */
+    font-weight: bold;
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    background-color: #f0f0f0;  /* Updated to match index */
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.add-btn {
+    padding: 8px 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.add-btn:hover {
+    background-color: #45a049;
+}
+
+/* Status badge styles */
+.status-badge {
+    padding: 5px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.status-badge.pending {
+    background-color: #ffd700;
+    color: #000;
+}
+
+.status-badge.approved {
+    background-color: #28a745;
+    color: white;
+}
+
+.status-badge.declined {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Action Buttons */
+.action-buttons {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn, .delete-btn {
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.edit-btn {
+    background-color: #ffc107;
+    color: white;
+}
+
+.delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Update button and layout styles */
+.table-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.search-section {
+    flex: 1;
+}
+
+.button-section {
+    margin-left: auto; /* Push button to the right */
+}
+
+.search-input {
+    padding: 10px 15px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 14px;
+}
+
+.add-btn {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    white-space: nowrap;
+    font-size: 14px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-width: 100px; /* Ensure minimum width */
+    justify-content: center; /* Center the content */
+}
+
+.add-btn i {
+    font-size: 14px;
+}
+
+.add-btn:hover {
+    background-color: #218838;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 5px;
+    max-width: 500px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.modal-header h2 {
+    font-size: 1.4em;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover {
+    color: black;
+}
+
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 3px;
+    font-size: 0.9em;
+}
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    padding: 6px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.submit-btn,
+.delete-btn,
+.cancel-btn {
+    padding: 8px 16px;
+    font-size: 0.9em;
+}
+
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.delete-btn {
+    background-color: #ff4444;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.cancel-btn {
+    background-color: #666;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+/* Submit and Update button styles */
+.submit-btn {
+    background-color: #007bff; /* Changed to blue */
+    color: white;
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Keep other button styles consistent */
+.modal-buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+/* Action Button Styles - Updated to remove extra space */
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 2px; /* Reduced margin */
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-edit:hover {
+    background-color: #e0a800;
+}
+
+.btn-delete:hover {
+    background-color: #c82333;
+}
+
+.btn i {
+    font-size: 14px;
+    margin-right: 4px; /* Reduced space between icon and text */
+}
+
+/* Make the Actions column more compact */
+.reserve-table td:last-child {
+    white-space: nowrap;
+    padding-right: 10px; /* Reduced padding */
+    width: 1%; /* Forces the column to be as narrow as possible */
+}
+
+/* Ensure buttons stay on one line */
+.btn-edit, .btn-delete {
+    min-width: auto; /* Remove minimum width */
+    padding: 6px 8px; /* Slightly reduced padding */
+}
+
+/* Action Button Styles for Reserve */
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.action-btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.action-btn.edit {
+    background-color: #ffc107;  /* Yellow background */
+    color: #000;
+}
+
+.action-btn.delete {
+    background-color: #dc3545;  /* Red background */
+    color: white;
+}
+
+.action-btn:hover {
+    opacity: 0.9;
+}
+
+.action-btn i {
+    font-size: 14px;
+    margin-right: 4px;
+}
+
+/* Make the Actions column more compact */
+.table td:last-child {
+    white-space: nowrap;
+    padding: 8px;
+    width: 1%;
+} 

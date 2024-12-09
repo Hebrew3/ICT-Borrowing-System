@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="logo-section">
+      <div class="logo-container">
+        <span class="logo-text">ICT</span>
+        <span class="logo-subtext">Borrowing System</span>
+      </div>
+    </div>
+    <div class="menu-links">
+      <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      
+      <!-- Storage Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+          <i class="fas fa-box"></i> Storage
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="storage-dropdown">
+          <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+          <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+          <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
+        </div>
+      </div>
+      
+      <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
+      <a href="member.html"><i class="fas fa-users"></i> Member</a>
+      
+      <!-- Maintenance as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
+      <a href="itemtype.html"><i class="fas fa-boxes"></i> Item Type</a>
+      <a href="category.html"><i class="fas fa-tags"></i> Category</a>
+      
+      <!-- Reports as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href=""><i class="fas fa-file-export"></i> Generate</a>
+    </div>
+    <div class="bottom-links">
+      <!-- User Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('user')">
+          <i class="fas fa-user-circle"></i> Admin
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="user-dropdown">
+          <div class="logout-wrapper">
+            <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <h1>PROFILE</h1>
+    <div class="content">
+      <div class="profile-container">
+        <h2>Edit your Profile</h2>
+        
+        <div class="profile-grid">
+          <div class="profile-left">
+            <div class="photo-section">
+              <label>Photo:</label>
+              <img src="/IMAGE/dan.jpg" alt="Profile Picture" class="avatar">
+              <button class="change-photo-btn">CHANGE PHOTO</button>
+            </div>
+          </div>
+          
+          <div class="profile-right">
+            <div class="form-group">
+              <label>Name:</label>
+              <input type="text" value="Admin">
+            </div>
+
+            <div class="form-group">
+              <label>Title:</label>
+              <input type="text" value="Administrator">
+            </div>
+
+            <div class="form-group">
+              <label>Organization:</label>
+              <input type="text" value="Ingeniux">
+            </div>
+
+            <div class="form-group">
+              <label>Mobile Phone:</label>
+              <input type="tel" value="(509)-123-4567">
+            </div>
+
+            <div class="form-group">
+              <label>Email:</label>
+              <input type="email" value="admin@ingeniux.com">
+            </div>
+
+            
+
+        <div class="button-group">
+          <button class="cancel-btn">Cancel</button>
+          <button class="save-btn">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="profile.js"></script>
+</body>
+</html>

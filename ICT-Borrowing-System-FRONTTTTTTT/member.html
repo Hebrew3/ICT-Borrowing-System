@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Member List</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="member.css">
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="logo-section">
+          <div class="logo-container">
+            <span class="logo-text">ICT</span>
+            <span class="logo-subtext">Borrowing System</span>
+          </div>
+        </div>
+        <div class="menu-links">
+          <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+          
+          <!-- Storage Dropdown -->
+          <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+              <i class="fas fa-box"></i> Storage
+              <i class="fas fa-caret-down dropdown-icon"></i>
+            </button>
+            <div class="dropdown-content" id="storage-dropdown">
+              <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+              <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+              <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
+            </div>
+          </div>
+          
+          <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
+          <a href="member.html"><i class="fas fa-users"></i> Member</a>
+          
+          <!-- Maintenance as clickable link -->
+          <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
+          <a href="itemtype.html"><i class="fas fa-boxes"></i> Item Type</a>
+          <a href="category.html"><i class="fas fa-tags"></i> Category</a>
+          
+          <!-- Reports as clickable link -->
+          <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
+          <a href=""><i class="fas fa-file-export"></i> Generate</a>
+        </div>
+        <div class="bottom-links">
+          <!-- User Dropdown -->
+          <div class="dropdown">
+            <button class="dropdown-btn" onclick="toggleDropdown('user')">
+              <i class="fas fa-user-circle"></i> Admin
+              <i class="fas fa-caret-down dropdown-icon"></i>
+            </button>
+            <div class="dropdown-content" id="user-dropdown">
+              <a href="profile.html"><i class="fas fa-id-card"></i> Profile</a>
+              <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div class="wrapper">
+        <h1 class="dashboard-title">MEMBER LIST</h1>
+        
+        <!-- Large Table -->
+        <div class="table-container full-width">
+            <div class="table-header">
+                <h2>Members</h2>
+                <!-- Add Member Button -->
+                <button class="add-button" id="addMemberBtn">
+                    <i class="fas fa-plus"></i> Add Member
+                </button>
+            </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Member ID</th>
+                        <th>Full Name</th>
+                        <th>Contact</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>MEM001</td>
+                        <td>John Smith</td>
+                        <td>+1 234-567-8901</td>
+                        <td>john.smith@email.com</td>
+                        <td>IT Department</td>
+                        <td><span class="status-active">Active</span></td>
+                        <td class="actions">
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            <button class="action-btn report" onclick="generateReport('MEM001')"><i class="fas fa-file-alt"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>MEM002</td>
+                        <td>Maria Garcia</td>
+                        <td>+1 234-567-8902</td>
+                        <td>maria.garcia@email.com</td>
+                        <td>HR Department</td>
+                        <td><span class="status-inactive">Inactive</span></td>
+                        <td class="actions">
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                            <button class="action-btn report" onclick="generateReport('MEM001')"><i class="fas fa-file-alt"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+
+    <!-- Add Member Modal -->
+    <div id="addMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add New Member</h2>
+            <form id="addMemberForm">
+                <div class="form-group">
+                    <label for="memberId">Member ID:</label>
+                    <input type="text" id="memberId" required>
+                </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text" id="fullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact:</label>
+                    <input type="text" id="contact" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="department">Department:</label>
+                    <input type="text" id="department" required>
+                </div>
+                <div class="form-group">
+                    <label for="status">Status:</label>
+                    <select id="status" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Add Member</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Edit Member Modal -->
+    <div id="editMemberModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Edit Member</h2>
+            <form id="editMemberForm">
+                <input type="hidden" id="editRowIndex">
+                <div class="form-group">
+                    <label for="editMemberId">Member ID:</label>
+                    <input type="text" id="editMemberId" required>
+                </div>
+                <div class="form-group">
+                    <label for="editFullName">Full Name:</label>
+                    <input type="text" id="editFullName" required>
+                </div>
+                <div class="form-group">
+                    <label for="editContact">Contact:</label>
+                    <input type="text" id="editContact" required>
+                </div>
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="editDepartment">Department:</label>
+                    <input type="text" id="editDepartment" required>
+                </div>
+                <div class="form-group">
+                    <label for="editStatus">Status:</label>
+                    <select id="editStatus" required>
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-btn">Update Member</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="member.js"></script>
+</body>
+</html>
