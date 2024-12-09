@@ -76,6 +76,27 @@ body {
   background-color: transparent !important;
   color: #8a9bb3 !important;
 }
+#user-dropdown a {
+  margin-top: 25px !important; 
+  padding: 15px 20px !important; 
+  display: block; 
+}
+
+#user-dropdown .logout-wrapper {
+  margin-top: 15px; 
+  text-align: center;
+}
+
+#user-dropdown .logout-wrapper a {
+  color: white;
+  padding: 15px 20px;
+  font-size: 16px;
+  display: inline-block;
+}
+
+#user-dropdown .logout-wrapper a:hover {
+  background-color: #263548;
+}
 
 .dropdown-btn {
   width: 100%;
@@ -89,7 +110,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-left: 30px;
 }
 
 .dropdown-content {
