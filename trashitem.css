@@ -260,9 +260,9 @@
 }
 
 .dropdown-content a {
-    padding: 12px 15px !important; /* Same padding as other items */
-    font-size: 16px !important;    /* Same size as other items */
-    margin: 0 !important;          /* Reset margin for dropdown items */
+    padding: 12px 15px !important; 
+    font-size: 16px !important;   
+    margin: 0 !important;          
 }
 
 .dropdown-content.show {
