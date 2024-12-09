@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Item Type</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="itemtype.css">
+</head>
+<body>
+   <!-- Sidebar -->
+   <div class="sidebar">
+    <div class="logo-section">
+      <div class="logo-container">
+        <span class="logo-text">ICT</span>
+        <span class="logo-subtext">Borrowing System</span>
+      </div>
+    </div>
+    <div class="menu-links">
+      <a href="index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
+      
+      <!-- Storage Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+          <i class="fas fa-box"></i> Storage
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="storage-dropdown">
+          <a href="ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+          <a href="IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+          <a href="trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
+        </div>
+      </div>
+      
+      <a href="reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
+      <a href="member.html"><i class="fas fa-users"></i> Member</a>
+      
+      <!-- Maintenance as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-tools"></i> Maintenance</a>
+      <a href="itemtype.html"><i class="fas fa-boxes"></i> Item Type</a>
+      <a href="category.html"><i class="fas fa-tags"></i> Category</a>
+      
+      <!-- Reports as clickable link -->
+      <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
+      <a href=""><i class="fas fa-file-export"></i> Generate</a>
+    </div>
+    <div class="bottom-links">
+      <!-- User Dropdown -->
+      <div class="dropdown">
+        <button class="dropdown-btn" onclick="toggleDropdown('user')">
+          <i class="fas fa-user-circle"></i> Admin
+          <i class="fas fa-caret-down dropdown-icon"></i>
+        </button>
+        <div class="dropdown-content" id="user-dropdown">
+          <a href="profile.html"><i class="fas fa-id-card"></i> Profile</a>
+          <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div class="wrapper">
+    <div class="content">
+        <h1 class="dashboard-title">ITEM TYPE</h1>
+
+        <!-- Add Modal -->
+        <div id="addModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Add Item</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="addItemForm">
+                        <div class="form-group">
+                            <label for="quantity">Quantity:</label>
+                            <input type="number" id="quantity" name="quantity" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="issued">Issued:</label>
+                            <input type="text" id="issued" name="issued" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="serialNo">Serial No.:</label>
+                            <input type="text" id="serialNo" name="serialNo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="itemName">Item Name:</label>
+                            <input type="text" id="itemName" name="itemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="brand">Brand:</label>
+                            <input type="text" id="brand" name="brand" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category:</label>
+                            <select id="category" name="category" required>
+                                <option value="">Select Category</option>
+                                <option value="ICT Equipment">ICT Equipment</option>
+                                <option value="Audio Visual">Audio Visual</option>
+                                <option value="Network Devices">Network Devices</option>
+                                <option value="Peripherals">Peripherals</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Description:</label>
+                            <textarea id="description" name="description" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="date">Date:</label>
+                            <input type="date" id="date" name="date" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Edit Item</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <form id="editItemForm">
+                        <input type="hidden" id="editIndex" name="editIndex">
+                        <div class="form-group">
+                            <label for="editQuantity">Quantity:</label>
+                            <input type="number" id="editQuantity" name="editQuantity" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="editIssued">Issued:</label>
+                            <input type="text" id="editIssued" name="editIssued" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editSerialNo">Serial No.:</label>
+                            <input type="text" id="editSerialNo" name="editSerialNo" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editItemName">Item Name:</label>
+                            <input type="text" id="editItemName" name="editItemName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editBrand">Brand:</label>
+                            <input type="text" id="editBrand" name="editBrand" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editCategory">Category:</label>
+                            <select id="editCategory" name="editCategory" required>
+                                <option value="">Select Category</option>
+                                <option value="ICT Equipment">ICT Equipment</option>
+                                <option value="Audio Visual">Audio Visual</option>
+                                <option value="Network Devices">Network Devices</option>
+                                <option value="Peripherals">Peripherals</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDescription">Description:</label>
+                            <textarea id="editDescription" name="editDescription" required></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="editDate">Date:</label>
+                            <input type="date" id="editDate" name="editDate" required>
+                        </div>
+                        <button type="submit" class="submit-btn">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div id="deleteModal" class="modal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>Delete Item</h2>
+                    <span class="close">&times;</span>
+                </div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this item?</p>
+                    <input type="hidden" id="deleteIndex" name="deleteIndex">
+                    <div class="modal-buttons">
+                        <button class="delete-btn" onclick="confirmDelete()">Delete</button>
+                        <button class="cancel-btn" onclick="closeDeleteModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <div class="table-header">
+                <div class="table-actions">
+                    <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                    <button class="add-btn">
+                        <i class="fas fa-plus"></i> Add New
+                    </button>
+                </div>
+            </div>
+            <table class="items-table">
+                <thead>
+                    <tr>
+                        <th>Quantity</th>
+                        <th>Issued</th>
+                        <th>Serial No.</th>
+                        <th>Item Name</th>
+                        <th>Brand</th>
+                        <th>Category</th>
+                        <th>Description</th>
+                        <th>Date</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Laptop</td>
+                        <td>Equipment</td>
+                        <td>Electronics</td>
+                        <td>5</td>
+                        <td>ICT Equipment</td>
+                        <td><span class="status-available">Available</span></td>
+                        <td>2024-03-20</td>
+                        <td class="actions">
+                            <button class="edit-btn" title="Edit"><i class="fas fa-edit"></i></button>
+                            <button class="delete-btn" title="Delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div> 
+
+<script src="itemtype.js"></script>
+</body>
+</html> 
