@@ -5,7 +5,7 @@ function handleLogin(event) {
     const password = document.getElementById('password').value;
     
     if (username && password) {
-        window.location.href = '/DASHBOARD/index.html';
+        window.location.href = 'index.html';
     } else {
         alert('Please fill in all fields');
     }
