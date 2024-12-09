@@ -20,19 +20,18 @@
     <div class="menu-links">
       <a href="/DASHBOARD/index.html"><i class="fas fa-tachometer-alt"></i> Dashboard</a>
       
-      <!-- Storage Dropdown -->
-      <div class="dropdown">
-        <button class="dropdown-btn" onclick="toggleDropdown('storage')">
-          <i class="fas fa-box"></i> Storage
-          <i class="fas fa-caret-down dropdown-icon"></i>
-        </button>
-        <div class="dropdown-content" id="storage-dropdown">
-          <a href="/LISTITEM/ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
-          <a href="/ISSUEDITEM/IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
-          <a href="/TRASHITEM/trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
-        </div>
-      </div>
-      
+<!-- Storage Dropdown -->
+<div class="dropdown">
+  <button class="dropdown-btn" onclick="toggleDropdown('storage')">
+    <i class="fas fa-box"></i> Storage
+    <i class="fas fa-caret-down dropdown-icon"></i>
+  </button>
+  <div class="dropdown-content" id="storage-dropdown">
+    <a href="/LISTITEM/ListItem.html"><i class="fas fa-clipboard-list"></i> List Item</a>
+    <a href="/ISSUEDITEM/IssuedItem.html"><i class="fas fa-hand-holding"></i> Issued Item</a>
+    <a href="/TRASHITEM/trashitem.html"><i class="fas fa-trash-alt"></i> Trash Item</a>
+  </div>
+</div>  
       <a href="/RESERVE/reserve.html"><i class="fas fa-bookmark"></i> Reserve</a>
       <a href="/MEMBER/member.html"><i class="fas fa-users"></i> Member</a>
       
@@ -43,7 +42,7 @@
       
       <!-- Reports as clickable link -->
       <a href="" class="small-header"><i class="fas fa-chart-line"></i> Reports</a>
-      <a href=""><i class="fas fa-file-export"></i> Generate</a>
+      <a href="generate"><i class="fas fa-file-export"></i> Generate</a>
     </div>
     <div class="bottom-links">
       <!-- User Dropdown -->
@@ -59,10 +58,12 @@
       </div>
     </div>
   </div>
+  
   <div class="wrapper">
+    <h1>PROFILE</h1>
     <div class="content">
       <div class="profile-container">
-        <h1>Edit your Profile</h1>
+        <h2>Edit your Profile</h2>
         
         <div class="profile-grid">
           <div class="profile-left">
@@ -108,5 +109,8 @@
       </div>
     </div>
   </div>
+
+  <script src="/PROFILE/profile.js"></script>
+
 </body>
 </html>
